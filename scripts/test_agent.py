@@ -23,7 +23,7 @@ if not os.path.exists(policy_dir):
 
 try:
     saved_policy = tf.compat.v2.saved_model.load(policy_dir)
-    policy = py_tf_eager_policy.SavedModelPyTFEagerPolicy(saved_policy, time_step_spec=eval_env.time_step_spec())
+    policy = py_tf_eager_policy.SavedModelPyTFEagerPolicy(model_path=policy_dir, time_step_spec=eval_env.time_step_spec())
 except Exception as e:
     raise RuntimeError(f"Error loading policy from '{policy_dir}': {e}")
 
