@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.environment import BirdRobotEnvironment
-from config import POLICY_DIR
+from config.config import POLICY_DIR
 
 # Create the environment
 eval_py_env = BirdRobotEnvironment()
