@@ -22,7 +22,6 @@ if not os.path.exists(policy_dir):
     raise FileNotFoundError(f"Policy directory '{policy_dir}' does not exist. Please ensure the model is trained and saved correctly.")
 
 try:
-    saved_policy = tf.compat.v2.saved_model.load(policy_dir)
     policy = py_tf_eager_policy.SavedModelPyTFEagerPolicy(model_path=policy_dir, time_step_spec=eval_env.time_step_spec())
 except Exception as e:
     raise RuntimeError(f"Error loading policy from '{policy_dir}': {e}")
