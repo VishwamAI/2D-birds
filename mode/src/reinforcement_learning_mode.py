@@ -1,47 +1,49 @@
 """
-Placeholder for Reinforcement Learning Mode
-This file outlines the basic structure for reinforcement learning mode in the Piksu Bird AI project.
+Reinforcement Learning Mode
+This file integrates the PikasuBirdAi model for reinforcement learning mode in the Piksu Bird AI project.
 """
 
-# Placeholder for the environment
+from pikasu_bird_ai import PikasuBirdAiModel, calculate_reward, PikasuBirdAiLearningAlgorithm
+
 class Environment:
     def __init__(self):
         # Initialize environment parameters
-        pass
+        self.model = PikasuBirdAiModel()  # Assuming PikasuBirdAiModel is the correct class; adjust if necessary
 
     def reset(self):
         # Reset the environment to a starting state
-        pass
+        self.state = self.model.reset_environment()  # Adjust method as needed
+        return self.state
 
     def step(self, action):
         # Apply an action to the environment and return the new state, reward, and done status
-        pass
+        next_state, reward, done = self.model.apply_action(action)  # Adjust method as needed
+        return next_state, reward, done
 
-# Placeholder for the agent
 class Agent:
     def __init__(self):
         # Initialize agent parameters
-        pass
+        self.model = PikasuBirdAiModel()  # Assuming PikasuBirdAiModel is the correct class; adjust if necessary
 
     def choose_action(self, state):
         # Decide an action based on the current state
-        pass
+        action = self.model.decide_action(state)  # Adjust method as needed
+        return action
 
     def learn(self, state, action, reward, next_state):
         # Learn from the experience and update the model
-        pass
+        self.model.update_model(state, action, reward, next_state)  # Adjust method as needed
 
-# Placeholder for the reward system
 def reward_system(state):
     # Define how the reward is calculated based on the state
-    pass
+    reward = calculate_reward(state)  # Implement the reward calculation logic
+    return reward
 
-# Placeholder for the learning algorithm
 def learning_algorithm():
     # Implement the learning algorithm (e.g., Q-learning, SARSA, Policy Gradient)
-    pass
+    algorithm = PikasuBirdAiLearningAlgorithm()  # Assuming PikasuBirdAiLearningAlgorithm is the correct class; adjust if necessary
+    return algorithm
 
-# Main loop for the reinforcement learning mode
 if __name__ == "__main__":
     # Initialize environment and agent
     environment = Environment()
